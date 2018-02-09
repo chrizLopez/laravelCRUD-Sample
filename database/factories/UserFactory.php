@@ -21,3 +21,14 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Person::class, function (Faker $faker) {
+	$gender = $faker->randomElements(['male', 'female']);
+    return [
+        'name' => $faker->name,
+        'email_address' => $faker->unique()->safeEmail,
+        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'gender' => $gender[0],
+        'description' => str_random(50),
+    ];
+});
